@@ -49,21 +49,17 @@ LUFFY/
 
 ### 🔴 High Priority TODOs
 
-- **API Integration**: OpenAI and Gemini API implementations need completion
+- **API Integration**: Gemini API full implementation (OpenAI core completed)
 - **Reward System**: Parallel processing and validation for reward computation  
 - **FSDP Training**: Model loading and distributed training setup
-- **Data Processing**: Batch dimension operations and tensor reshaping
+- **Data Processing**: Optimization improvements for batch dimension operations
+
 
 ### 📝 Complete TODO List
 
-- [ ] **luffy/deepscaler/utils.py:45** - Implement OpenAI API client initialization
-- [ ] **luffy/deepscaler/utils.py:46** - Add proper authentication handling
-- [ ] **luffy/deepscaler/utils.py:47** - Implement exponential backoff retry logic for rate limits
-- [ ] **luffy/deepscaler/utils.py:48** - Add comprehensive error handling for different API errors
-- [ ] **luffy/deepscaler/utils.py:49** - Implement response parsing and validation
-- [ ] **luffy/deepscaler/utils.py:50** - Add logging for API calls and errors
-- [ ] **luffy/deepscaler/utils.py:51** - Support batch processing for multiple prompts
-- [ ] **luffy/deepscaler/utils.py:52** - Add timeout configuration for API calls
+- [ ] **luffy/deepscaler/utils.py:45** - Add logging for API calls and errors
+- [ ] **luffy/deepscaler/utils.py:46** - Support batch processing for multiple prompts
+- [ ] **luffy/deepscaler/utils.py:47** - Add timeout configuration for API calls
 - [ ] **luffy/deepscaler/utils.py:88** - Implement Vertex AI initialization and authentication
 - [ ] **luffy/deepscaler/utils.py:89** - Configure safety settings for content generation
 - [ ] **luffy/deepscaler/utils.py:90** - Set up GenerativeModel with proper system instructions
@@ -110,16 +106,10 @@ LUFFY/
 - [ ] **luffy/verl/verl/models/llama/megatron/modeling_llama_megatron.py:588** - for better performance, the sp padding should be removed at each layer. Not sure the performance gap
 - [ ] **luffy/verl/verl/models/registry.py:21** - (sgm): HF may supported more than listed here, we should add more after testing
 - [ ] **luffy/verl/verl/models/transformers/llama.py:88** - These transpose are quite inefficient but Flash Attention requires the layout [batch_size, sequence_length, num_heads, head_dim]. We would need to refactor the KV cache
-- [ ] **luffy/verl/verl/protocol.py:114** - Implement batch dimension folding for efficient processing
-- [ ] **luffy/verl/verl/protocol.py:115** - Add validation for batch size compatibility
-- [ ] **luffy/verl/verl/protocol.py:116** - Handle edge cases where batch_size is not divisible by new_batch_size
-- [ ] **luffy/verl/verl/protocol.py:117** - Optimize memory usage during tensor reshaping
-- [ ] **luffy/verl/verl/protocol.py:118** - Add support for different tensor types and shapes
-- [ ] **luffy/verl/verl/protocol.py:131** - Implement batch dimension unfolding functionality
-- [ ] **luffy/verl/verl/protocol.py:132** - Add support for variable batch dimensions
-- [ ] **luffy/verl/verl/protocol.py:133** - Optimize tensor view operations for performance
-- [ ] **luffy/verl/verl/protocol.py:134** - Handle non-tensor batch data reshaping properly
-- [ ] **luffy/verl/verl/protocol.py:135** - Add error handling for invalid batch dimensions
+- [ ] **luffy/verl/verl/protocol.py:114** - Optimize memory usage during tensor reshaping
+- [ ] **luffy/verl/verl/protocol.py:115** - Add support for different tensor types and shapes
+- [ ] **luffy/verl/verl/protocol.py:131** - Optimize tensor view operations for performance
+- [ ] **luffy/verl/verl/protocol.py:132** - Add error handling for invalid batch dimensions
 - [ ] **luffy/verl/verl/protocol.py:156** - (zhangchi.usc1992) add consistency check
 - [ ] **luffy/verl/verl/protocol.py:252** - we can actually lift this restriction if needed
 - [ ] **luffy/verl/verl/protocol.py:338** - (zhangchi.usc1992) whether to copy
@@ -154,7 +144,7 @@ LUFFY/
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/llm_engine_sp.py:128** - (woosuk): Print more configs in debug mode.
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/llm_engine_sp.py:130** - currently is hfconfig
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/llm_engine_sp.py:143** - (shengguangming): maybe we can choose init here or from arguments
-- [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/llm_engine_sp.py:145** - check tokenizer class
+- [ ] **luffy/verl/verl/verl/third_party/vllm/vllm_v_0_4_2/llm_engine_sp.py:145** - check tokenizer class
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/llm_engine_sp.py:153** - don't know what's the usage
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/llm_engine_sp.py:228** - (sgm): add for verl but we may not tokenizer in Rollout
 - [ ] **luffy/verl/verl/third_party/vllm/vllm_v_0_4_2/llm_engine_sp.py:237** - check whether we should rebuild the CUDAGraph every iter when offload/load KVCache
@@ -219,7 +209,7 @@ LUFFY/
 - [ ] **luffy/verl/verl/trainer/fsdp_sft_trainer.py:174** - Add CPU offloading configuration for memory optimization
 - [ ] **luffy/verl/verl/trainer/fsdp_sft_trainer.py:175** - Set up distributed training parameters properly
 - [ ] **luffy/verl/verl/trainer/fsdp_sft_trainer.py:178** - Initialize FSDP wrapped model
-- [ ] **luffy/verl/verl/trainer/fsdp_sft_trainer.py:301** - add a unified tracking
+- [ ] **luffy/verl/verl/verl/trainer/fsdp_sft_trainer.py:301** - add a unified tracking
 - [ ] **luffy/verl/verl/trainer/fsdp_sft_trainer.py:318** - (zhangchi.usc1992) add back checkpoint manager. Currently, it blocks when uploading to hdfs. So very slow.
 - [ ] **luffy/verl/verl/trainer/main_ppo.py:50** - Implement reward computation for different data sources
 - [ ] **luffy/verl/verl/trainer/main_ppo.py:53** - Add support for parallel processing of reward computation
@@ -232,14 +222,14 @@ LUFFY/
 - [ ] **luffy/verl/verl/trainer/main_ppo.py:65** - Handle edge cases and error conditions
 - [ ] **luffy/verl/verl/trainer/main_ppo.py:70** - Implement batch-wise reward computation
 - [ ] **luffy/verl/verl/trainer/main_ppo.py:71** - Add proper error handling and validation
-- [ ] **luffy/verl/verl/trainer/ppo/ray_trainer.py:129** - add other ways to estimate advantages
+- [ ] **luffy/verl/verl/verl/trainer/ppo/ray_trainer.py:129** - add other ways to estimate advantages
 - [ ] **luffy/verl/verl/trainer/ppo/ray_trainer.py:207** - add response length
 - [ ] **luffy/verl/verl/trainer/ppo/ray_trainer.py:330** - support each role have individual ray_worker_group_cls,
 - [ ] **luffy/verl/verl/trainer/ppo/ray_trainer.py:379** - we have to make sure the batch size is divisible by the dp size
 - [ ] **luffy/verl/verl/trainer/ppo/ray_trainer.py:632** - check path
 - [ ] **luffy/verl/verl/trainer/ppo/ray_trainer.py:667** - from remote not implemented yet
-- [ ] **luffy/verl/verl/trainer/ppo/ray_trainer.py:880** - make a canonical logger that supports various backend
-- [ ] **luffy/verl/verl/utils/checkpoint/fsdp_checkpoint_manager.py:101** - shall we remove previous ckpt every save?
+- [ ] **luffy/verl/verl/verl/trainer/ppo/ray_trainer.py:880** - make a canonical logger that supports various backend
+- [ ] **luffy/verl/verl/verl/utils/checkpoint/fsdp_checkpoint_manager.py:101** - shall we remove previous ckpt every save?
 - [ ] **luffy/verl/verl/utils/checkpoint/fsdp_checkpoint_manager.py:135** - address optimizer is None
 - [ ] **luffy/verl/verl/utils/hdfs_io.py:67** - (haibin.lin):
 - [ ] **luffy/verl/verl/utils/hdfs_io.py:102** - (haibin.lin):
@@ -289,4 +279,3 @@ LUFFY/
 2. Implement the functionality
 3. Test your implementation
 4. Update this README when TODOs are completed
-
